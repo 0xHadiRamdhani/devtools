@@ -46,6 +46,34 @@ const tools = [
     icon: Globe,
     color: "text-emerald-400 bg-emerald-400/10",
   },
+  {
+    href: "/tools/api-validator",
+    label: "API Validator",
+    description: "Validate API responses against OpenAPI specs with visual diffs.",
+    icon: FileJson,
+    color: "text-orange-400 bg-orange-400/10",
+  },
+  {
+    href: "/tools/auth-analyzer",
+    label: "Auth Flow Analyzer",
+    description: "Visualize and analyze authentication flows for security risks.",
+    icon: Globe, // Reusing Globe or importing new one if needed, let's stick to existing imports or add one.
+    color: "text-indigo-400 bg-indigo-400/10",
+  },
+  {
+    href: "/tools/encoding-analyzer",
+    label: "Encoding Chain",
+    description: "Multi-layer recursive decoding for complex strings.",
+    icon: Code2, // Reusing Code2
+    color: "text-pink-400 bg-pink-400/10",
+  },
+  {
+    href: "/tools/attack-simulator",
+    label: "Attack Simulator",
+    description: "Interactive educational scenarios for learning web vulnerabilities.",
+    icon: KeyRound, // Reusing KeyRound
+    color: "text-red-400 bg-red-400/10",
+  },
 ];
 
 export default function Home() {

@@ -6,24 +6,32 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     Braces,
+    Clipboard,
     Code2,
     FileJson,
     Globe,
     KeyRound,
     LayoutDashboard,
     Menu,
-    X
+    X,
+    Info
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 const menuItems = [
     { href: "/", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/tools/smart-clipboard", label: "Smart Clipboard", icon: Clipboard },
     { href: "/tools/json-formatter", label: "JSON Formatter", icon: FileJson },
     { href: "/tools/base64", label: "Base64 Converter", icon: Code2 },
     { href: "/tools/jwt-decoder", label: "JWT Decoder", icon: KeyRound },
     { href: "/tools/regex-tester", label: "Regex Tester", icon: Braces },
     { href: "/tools/http-status", label: "HTTP Status", icon: Globe },
+    { href: "/tools/api-validator", label: "API Validator", icon: FileJson },
+    { href: "/tools/auth-analyzer", label: "Auth Flow Analyzer", icon: Globe },
+    { href: "/tools/encoding-analyzer", label: "Encoding Chain", icon: Code2 },
+    { href: "/tools/attack-simulator", label: "Attack Simulator", icon: KeyRound },
+    { href: "/about", label: "About DevTools", icon: Info },
 ];
 
 export function Sidebar() {
