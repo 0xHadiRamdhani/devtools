@@ -124,7 +124,7 @@ export default function HttpStatusChecker() {
                                 <CardContent className="p-0">
                                     <div className="divide-y divide-zinc-800">
                                         {Object.entries(result.headers).map(([key, value]) => (
-                                            <div key={key} className="flex grid grid-cols-12 p-3 text-sm hover:bg-white/5">
+                                            <div key={key} className="grid grid-cols-12 p-3 text-sm hover:bg-white/5">
                                                 <div className="col-span-4 font-mono text-zinc-400 break-all">{key}</div>
                                                 <div className="col-span-8 font-mono text-zinc-200 break-all">{(value as string)}</div>
                                             </div>

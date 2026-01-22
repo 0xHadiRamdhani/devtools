@@ -99,7 +99,7 @@ export default function JwtDecoder() {
                     </Card>
 
                     {/* Payload */}
-                    <Card className="flex-[2] border-zinc-800 bg-zinc-900/30 overflow-hidden flex flex-col">
+                    <Card className="flex-2 border-zinc-800 bg-zinc-900/30 overflow-hidden flex flex-col">
                         <CardHeader className="pb-2 py-3 bg-zinc-900/50 border-b border-zinc-800">
                             <CardTitle className="text-xs font-mono uppercase tracking-wider text-violet-400">Payload</CardTitle>
                         </CardHeader>
