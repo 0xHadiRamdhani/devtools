@@ -5,7 +5,13 @@ import {
   FileJson,
   Globe,
   KeyRound,
-  ArrowRight
+  ArrowRight,
+  Network,
+  Activity,
+  Zap,
+  GitCompare,
+  Bot,
+  ShieldCheck
 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -73,6 +79,48 @@ const tools = [
     description: "Interactive educational scenarios for learning web vulnerabilities.",
     icon: KeyRound, // Reusing KeyRound
     color: "text-red-400 bg-red-400/10",
+  },
+  {
+    href: "/tools/auth-graph",
+    label: "Auth & Permission Graph",
+    description: "Visualize RBAC/ABAC models and map user permissions.",
+    icon: Network,
+    color: "text-cyan-400 bg-cyan-400/10",
+  },
+  {
+    href: "/tools/api-flow",
+    label: "Stateful API Simulator",
+    description: "chain requests with variable extraction and state persistence.",
+    icon: Activity,
+    color: "text-green-500 bg-green-500/10",
+  },
+  {
+    href: "/tools/attack-chain",
+    label: "Attack Chain Visualizer",
+    description: "Map out cyber kill chains and multi-stage attack paths.",
+    icon: Zap,
+    color: "text-yellow-400 bg-yellow-400/10",
+  },
+  {
+    href: "/tools/drift-detector",
+    label: "Contract Drift Detector",
+    description: "Compare API specifications (OpenAPI) against implementation.",
+    icon: GitCompare,
+    color: "text-orange-500 bg-orange-500/10",
+  },
+  {
+    href: "/tools/ai-reviewer",
+    label: "AI Security Reviewer",
+    description: "Automated static analysis and security code review assistant.",
+    icon: Bot,
+    color: "text-fuchsia-400 bg-fuchsia-400/10",
+  },
+  {
+    href: "/tools/compliance-engine",
+    label: "Compliance Engine (OWASP)",
+    description: "OWASP Top 10, ASVS, CWE mapping, and Risk Matrix calculator.",
+    icon: ShieldCheck,
+    color: "text-emerald-400 bg-emerald-400/10",
   },
 ];
 
