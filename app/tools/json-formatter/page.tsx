@@ -92,7 +92,7 @@ export default function JsonFormatter() {
             const nested: { name: string, obj: any }[] = [];
 
             for (const [key, val] of Object.entries(obj)) {
-                let type = typeof val;
+                let type: string = typeof val;
                 if (val === null) type = "any";
                 else if (Array.isArray(val)) {
                     if (val.length > 0 && typeof val[0] === 'object') {
