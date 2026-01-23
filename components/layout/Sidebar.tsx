@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     Braces,
@@ -118,14 +118,35 @@ export function Sidebar() {
         });
     }, [pathname]);
 
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "unset";
-        }
-        return () => { document.body.style.overflow = "unset"; };
-    }, [isOpen]);
+    const sidebarRef = useRef<HTMLElement>(null);
+    const [isResizing, setIsResizing] = useState(false);
+
+    // Resizing Logic
+    const startResizing = useCallback((mouseDownEvent: React.MouseEvent) => {
+        setIsResizing(true);
+        mouseDownEvent.preventDefault();
+
+        const startX = mouseDownEvent.clientX;
+        const startWidth = sidebarRef.current ? sidebarRef.current.getBoundingClientRect().width : 256;
+
+        const doDrag = (mouseMoveEvent: MouseEvent) => {
+            const newWidth = startWidth + (mouseMoveEvent.clientX - startX);
+            if (newWidth > 200 && newWidth < 480) { // Min 200px, Max 480px
+                document.documentElement.style.setProperty('--sidebar-width', `${newWidth}px`);
+            }
+        };
+
+        const stopDrag = () => {
+            setIsResizing(false);
+            document.removeEventListener('mousemove', doDrag);
+            document.removeEventListener('mouseup', stopDrag);
+            document.body.style.cursor = 'default';
+        };
+
+        document.addEventListener('mousemove', doDrag);
+        document.addEventListener('mouseup', stopDrag);
+        document.body.style.cursor = 'ew-resize';
+    }, []);
 
     const toggleGroup = (id: string) => {
         setExpandedGroups(prev =>
@@ -267,8 +288,18 @@ export function Sidebar() {
             </header>
 
             {/* Desktop Sidebar */}
-            <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 border-r border-white/5 bg-zinc-950/50 backdrop-blur-xl lg:flex">
-                <SidebarContent />
+            <aside
+                ref={sidebarRef}
+                className="fixed left-0 top-0 z-40 hidden h-screen border-r border-white/5 bg-zinc-950/50 backdrop-blur-xl lg:flex w-[var(--sidebar-width,16rem)]"
+            >
+                <div className="relative w-full h-full">
+                    <SidebarContent />
+                    {/* Resizer Handle */}
+                    <div
+                        className="absolute right-0 top-0 h-full w-1 cursor-ew-resize hover:bg-blue-500/50 transition-colors z-500"
+                        onMouseDown={startResizing}
+                    />
+                </div>
             </aside>
 
             {/* Mobile Drawer */}
